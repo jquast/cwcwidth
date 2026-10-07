@@ -47,9 +47,9 @@ In case the extension should be built with the limited Python API, set the envir
 ```python3
 >>> import wcwidth, cwcwidth, timeit
 >>> timeit.timeit(lambda: wcwidth.wcswidth("コンニチハ, セカイ!"))
-19.14463168097427
+0.14625350598362274
 >>> timeit.timeit(lambda: cwcwidth.wcswidth("コンニチハ, セカイ!"))
-0.16294104099506512
+0.09358216598047875
 ```
 
 ## License
