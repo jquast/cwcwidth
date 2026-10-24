@@ -54,6 +54,8 @@ cwcwidth is about 2.3x faster than wcwidth,
 0.0692138300219085
 ```
 
+`wcwidth` ships a compiled extension for the stable ABI (`cp310-abi3`) through [libwcwidth](https://wcwidth.readthedocs.io/en/latest/libwcwidth.html), and provides support for languages, emojis, flags, VS15/VS16, and complex graphemes, Brahmic scripts, and per-terminal correction tables, while `uwcwidth` strictly supports only narrow or wide western and CJK languages.
+
 ## License
 
 The code is licensed under the MIT license.
