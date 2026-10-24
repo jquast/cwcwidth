@@ -44,7 +44,8 @@ In case the extension should be built with the limited Python API, set the envir
 
 ## Comparison with `wcwidth`
 
-cwcwidth is about 2.3x faster than wcwidth,
+`cwcwidth` is about 2x faster than [wcwidth](https://wcwidth.readthedocs.io/en/latest/intro.html)
+for CJK,
 
 ```python3
 >>> import wcwidth, cwcwidth, timeit
@@ -54,7 +55,11 @@ cwcwidth is about 2.3x faster than wcwidth,
 0.0692138300219085
 ```
 
-`wcwidth` ships a compiled extension for the stable ABI (`cp310-abi3`) through [libwcwidth](https://wcwidth.readthedocs.io/en/latest/libwcwidth.html), and provides support for languages, emojis, flags, VS15/VS16, and complex graphemes, Brahmic scripts, and per-terminal correction tables, while `uwcwidth` strictly supports only narrow or wide western and CJK languages.
+`wcwidth` ships a compiled extension for the stable ABI (`cp310-abi3`) with
+[libwcwidth](https://wcwidth.readthedocs.io/en/latest/libwcwidth.html), and provides *grapheme
+support*, required for complex languages and emojis, while `uwcwidth` is without grapheme support,
+calculating the sum of single-codepoint inspections as zero, narrow, or wide, and so `uwcwidth` is
+unable to measure emojis, flags, or complex languages.
 
 ## License
 
