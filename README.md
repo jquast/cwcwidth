@@ -44,6 +44,8 @@ In case the extension should be built with the limited Python API, set the envir
 
 ## Comparison with `wcwidth`
 
+cwcwidth is about 2.3x faster than wcwidth,
+
 ```python3
 >>> import wcwidth, cwcwidth, timeit
 >>> timeit.timeit(lambda: wcwidth.wcswidth("コンニチハ, セカイ!"))
@@ -51,13 +53,6 @@ In case the extension should be built with the limited Python API, set the envir
 >>> timeit.timeit(lambda: cwcwidth.wcswidth("コンニチハ, セカイ!"))
 0.0692138300219085
 ```
-
-Measured with CPython 3.15.0a5 on x86-64 Linux against `wcwidth` 0.9.1, one million calls
-each. Both figures are compiled code: `wcwidth` ships `_wcwidth_c` built for the stable ABI
-(`abi3`), so its wheel runs the C extension on every supported interpreter, while its pure
-Python module (`wcwidth._wcswidth`) takes 2.2 s. `cwcwidth` compiles its Cython module per
-interpreter version, and reaches the stable ABI only when built with `USE_LIMITED_API`, which
-gives 0.098 s instead of 0.069 s.
 
 ## License
 
